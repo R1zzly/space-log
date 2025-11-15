@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  /* Use a different background for auth pages if desired */
+  background-color: #e9ebee; 
+}
+
+.container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 40px;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.language-switcher {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 5px;
+}
+
+.lang-btn {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+.lang-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-btn.active {
+  background-color: #2500f7;
+  color: white;
+  border-color: #2500f7;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  max-width: 200px;
+  border-radius: 50%;
+}
+
+.registration-form, .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border 0.3s;
+  color: #333;
+}
+
+.form-group input::placeholder {
+  color: #999;
+  font-weight: 100;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2500f7;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  height: 16px;
+}
+
+.submit-btn {
+  background-color: #2500f7;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #555555;
+}
+
+.register-link {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.register-link a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}

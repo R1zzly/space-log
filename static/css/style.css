@@ -1,0 +1,304 @@
+/* --- Base Styles (from orderCreate.css) --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.sidebar {
+    width: 80px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.logo {
+    font-weight: bold;
+    color: #004fc4;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    max-width: 70px;
+    border-radius: 10%;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.person img {
+    max-width: 25px;
+    border-radius: 90%;
+}
+
+.mylist img {
+    max-width: 25px;
+    border-radius: 10%;
+}
+
+.pluslist img {
+    max-width: 25px;
+    border-radius: 10%;
+}
+
+.plusperson img {
+    max-width: 25px;
+    border-radius: 30%;
+}
+
+.logout {
+    margin-top: auto;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.lang-btn {
+    margin-right: 8px;
+    padding: 4px 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 4px;
+}
+
+h2,
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+form,
+.file-upload {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-row input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.form-row input {
+    flex: 1;
+    min-width: 180px;
+}
+
+button[type="submit"],
+#addProduct,
+.file-btn {
+    background-color: #004fc4;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-upload select,
+.file-upload input[type="file"] {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#fileStatus {
+    color: #777;
+    text-align: center;
+}
+
+
+/* --- Order List Styles (from orderList.css) --- */
+.order-list-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-table th,
+.order-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.order-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.order-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.order-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.pagination-link,
+.pagination-button,
+.pagination-ellipsis {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 0 2px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #004fc4;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    user-select: none;
+}
+
+.pagination-button:disabled {
+    color: #aaa;
+    cursor: not-allowed;
+    background-color: #f5f5f5;
+}
+
+.pagination-link.active {
+    background-color: #004fc4;
+    color: #fff;
+    border-color: #004fc4;
+    cursor: default;
+}
+
+.pagination-ellipsis {
+    border: none;
+    background: none;
+    cursor: default;
+}
+
+.total-records {
+    margin-right: auto;
+    font-size: 14px;
+    color: #333;
+}
+
+.order-link {
+    color: #004fc4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.order-link:hover {
+    text-decoration: underline;
+}
+
+
+/* --- Order Details Styles (from orderDetails.css) --- */
+.details-form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.details-field {
+    width: 100%;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    min-height: 40px;
+    font-size: 14px;
+    color: #333;
+}
+
+.detail-item {
+    flex: 1;
+    min-width: 180px;
+}
+
+.detail-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+}
+
+.details-list {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.details-list .list-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.details-list .list-item:last-child {
+    border-bottom: none;
+}
