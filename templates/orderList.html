@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Список заказов</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+    <div class="sidebar">
+        <nav>
+            <a href="{% url 'order_list_page' %}">
+                <div class="logo">
+                    <img src="{% static 'images/logo.jpg' %}" alt="Space Logistic">
+                </div>
+            </a>
+        </nav>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'profile_page' %}">
+                        <div class="person">
+                            <img src="{% static 'images/person.png' %}" alt="Profile">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'order_list_page' %}">
+                        <div class="mylist">
+                            <img src="{% static 'images/mylist.png' %}" alt="My List">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'order_create_page' %}">
+                        <div class="pluslist">
+                            <img src="{% static 'images/pluslist.png' %}" alt="Add Order">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="plusperson">
+                            <img src="{% static 'images/plusperson.png' %}" alt="Add Person">
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <button class="logout">⇦</button>
+    </div>
+
+    <div class="main">
+        <div class="top-bar">
+            <div>
+                <button class="lang-btn" data-lang="kz">KZ</button>
+                <button class="lang-btn" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="cn">CN</button>
+            </div>
+            <div class="user">{{ user.name }}</div>
+        </div>
+
+        <h2 data-i18n="orderList">Список заказов</h2>
+
+        <div class="order-list-container">
+            <table class="order-table">
+                <thead>
+                    <tr>
+                        <th data-i18n="orderDate">Дата заказа</th>
+                        <th data-i18n="orderNumber">Номер заказа</th>
+                        <th data-i18n="carNumber">Номер машины</th>
+                        <th data-i18n="grossWeight">Вес Брутто</th>
+                        <th data-i18n="netWeight">Вес Нетто</th>
+                        <th data-i18n="price">Стоимость</th>
+                    </tr>
+                </thead>
+                <tbody id="orderListBody">
+                    </tbody>
+            </table>
+        </div>
+
+        <div id="pagination" class="pagination">
+            </div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <style>
+        /* Дополнительные стили для страницы профиля */
+        .profile-form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .profile-form h3 {
+            margin-top: 0;
+        }
+        .profile-form p {
+            margin-bottom: 15px;
+        }
+        .profile-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .profile-form input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        .messages li.success {
+            padding: 15px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <nav>
+            <a href="{% url 'order_list_page' %}">
+                <div class="logo">
+                    <img src="{% static 'images/logo.jpg' %}" alt="Space Logistic">
+                </div>
+            </a>
+        </nav>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'profile_page' %}">
+                        <div class="person">
+                            <img src="{% static 'images/person.png' %}" alt="Profile">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'order_list_page' %}">
+                        <div class="mylist">
+                            <img src="{% static 'images/mylist.png' %}" alt="My List">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'order_create_page' %}">
+                        <div class="pluslist">
+                            <img src="{% static 'images/pluslist.png' %}" alt="Add Order">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="plusperson">
+                            <img src="{% static 'images/plusperson.png' %}" alt="Add Person">
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <button class="logout">⇦</button>
+    </div>
+
+    <div class="main">
+        <div class="top-bar">
+            <div>
+                <button class="lang-btn" data-lang="kz">KZ</button>
+                <button class="lang-btn" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="cn">CN</button>
+            </div>
+            <div class="user">{{ user.get_full_name|default:user.username }}</div>
+        </div>
+
+        <h2 data-i18n="profilePage">Страница профиля</h2>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="post" class="profile-form">
+            <h3 data-i18n="header_update_profile">Обновить данные</h3>
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label data-i18n="label_username">Имя пользователя (логин):</label>
+                <div class="details-field">{{ user.username }}</div>
+            </div>
+            <div class="form-group">
+                <label data-i18n="label_first_name">Имя:</label>
+                <div class="details-field">{{ user.first_name }}</div>
+            </div>
+            <div class="form-group">
+                <label data-i18n="label_last_name">Фамилия:</label>
+                <div class="details-field">{{ user.last_name }}</div>
+            </div>
+            <div class="form-group">
+                <label data-i18n="label_email">Email:</label>
+                <div class="details-field">{{ user.email }}</div>
+            </div>
+            
+            <p>
+                <label for="{{ profile_form.phone.id_for_label }}" data-i18n="label_phone">Телефон:</label>
+                {{ profile_form.phone }}
+                {% if profile_form.phone.errors %}
+                    <div class="error-message">{{ profile_form.phone.errors.as_text }}</div>
+                {% endif %}
+            </p>
+
+            <button type="submit" name="update_profile" class="file-btn" data-i18n="button_update_profile">Обновить профиль</button>
+        </form>
+
+        <form method="post" class="profile-form">
+            <h3 data-i18n="header_change_password">Сменить пароль</h3>
+            {% csrf_token %}
+            
+            <p>
+                <label for="{{ password_form.old_password.id_for_label }}" data-i18n="label_old_password">Старый пароль</label>
+                {{ password_form.old_password }}
+                {% if password_form.old_password.errors %}<div class="error-message">{{ password_form.old_password.errors.as_text }}</div>{% endif %}
+            </p>
+            <p>
+                <label for="{{ password_form.new_password1.id_for_label }}" data-i18n="label_new_password1">Новый пароль</label>
+                {{ password_form.new_password1 }}
+                {% if password_form.new_password1.errors %}<div class="error-message">{{ password_form.new_password1.errors.as_text }}</div>{% endif %}
+            </p>
+            <p>
+                <label for="{{ password_form.new_password2.id_for_label }}" data-i18n="label_new_password2">Подтверждение нового пароля</label>
+                {{ password_form.new_password2 }}
+                {% if password_form.new_password2.errors %}<div class="error-message">{{ password_form.new_password2.errors.as_text }}</div>{% endif %}
+            </p>
+
+            <button type="submit" name="change_password" class="file-btn" data-i18n="button_change_password">Сменить пароль</button>
+        </form>
+
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

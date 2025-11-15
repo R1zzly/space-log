@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Детали заказа</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+    <div class="sidebar">
+        <nav>
+            <a href="{% url 'order_list_page' %}">
+                <div class="logo">
+                    <img src="{% static 'images/logo.jpg' %}" alt="Space Logistic">
+                </div>
+            </a>
+        </nav>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'profile_page' %}">
+                        <div class="person">
+                            <img src="{% static 'images/person.png' %}" alt="Profile">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'order_list_page' %}">
+                        <div class="mylist">
+                            <img src="{% static 'images/mylist.png' %}" alt="My List">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'order_create_page' %}">
+                        <div class="pluslist">
+                            <img src="{% static 'images/pluslist.png' %}" alt="Add Order">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="plusperson">
+                            <img src="{% static 'images/plusperson.png' %}" alt="Add Person">
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <button class="logout">⇦</button>
+    </div>
+
+    <div class="main">
+        <div class="top-bar">
+            <div>
+                <button class="lang-btn" data-lang="kz">KZ</button>
+                <button class="lang-btn" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="cn">CN</button>
+            </div>
+            <div class="user">{{ user.username }}</div>
+        </div>
+
+        <h2 data-i18n="orderDetails">Детали заказа</h2>
+
+        <div class="details-form">
+
+       <div class="form-row">
+            <div class="detail-item">
+                <label data-i18n="client">Клиент</label>
+                <div id="client" class="details-field"></div>
+            </div>
+            <div class="detail-item">
+                <label data-i18n="currency">Валюта</label>
+                <div id="currency" class="details-field"></div>
+            </div>
+        </div>     
+
+        <div class="form-row">
+            <div class="detail-item">
+                <label data-i18n="crossing">Точка перехода</label>
+                <div id="crossing" class="details-field"></div>
+            </div>
+            <div class="detail-item">
+                <label data-i18n="destination">Место назначения</label>
+                <div id="destination" class="details-field"></div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="detail-item">
+                <label data-i18n="sender">Отправитель</label>
+                <div id="sender" class="details-field"></div>
+            </div>
+            <div class="detail-item">
+                <label data-i18n="receiver">Получатель</label>
+                <div id="receiver" class="details-field"></div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="detail-item">
+                <label data-i18n="senderAddress">Адрес отп.</label>
+                <div id="senderAddress" class="details-field"></div>
+            </div>
+            <div class="detail-item">
+                <label data-i18n="receiverAddress">Адрес получателя</label>
+                <div id="receiverAddress" class="details-field"></div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="detail-item">
+                <label data-i18n="carNumber">Номер машины</label>
+                <div id="carNumber" class="details-field"></div>
+            </div>
+            <div class="detail-item">
+                <label data-i18n="carWeight">Вес машины</label>
+                <div id="carWeight" class="details-field"></div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="detail-item">
+                <label data-i18n="trailerNumber">Номер Прицепа</label>
+                <div id="trailerNumber" class="details-field"></div>
+            </div>
+            <div class="detail-item">
+                <label data-i18n="trailerWeight">Вес Прицепа</label>
+                <div id="trailerWeight" class="details-field"></div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="detail-item">
+                <label data-i18n="loadedWeight">Общий Вес</label>
+                <div id="loadedWeight" class="details-field"></div>
+            </div>
+            <div class="detail-item">
+                <label data-i18n="driverNumber">Номер водителя</label>
+                <div id="driver_number" class="details-field"></div>
+            </div>
+           
+        </div>
+    </div>
+
+        <h3 data-i18n="orderGoods">Товары заказа</h3>
+        <div id="goodsList" class="details-list">
+            </div>
+
+        <h3 data-i18n="fileList">Список файлов</h3>
+        <div id="fileList" class="details-list">
+             </div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
